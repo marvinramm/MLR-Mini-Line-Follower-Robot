@@ -27,7 +27,7 @@ I developed the MLR in 2024 in a group project at HTW Berlin. In the full projec
   - 1S Li-Ion battery
   - MCP73831 charger on USB-C, the blue status LED shows charging
   - FP6291 boost converter to 5 V for motors and LEDs, RT9080 LDO for 3.3 V
-- **Soft power switch:** the button turns the robot on, and the firmware keeps it on through a P-MOSFET (`PWR_EN`). That lets the robot switch itself off.
+- **Soft power switch:** the button turns the robot on, and the firmware keeps it on through a P-MOSFET (`PWR_EN`). That lets the robot switch itself off (does not work on V1.0, see [Known issues](#known-issues)).
 - **74HC595 shift register** for motor direction, standby, status LED and power latch. This frees GPIOs on the small ESP32-C3.
 - **Tag-Connect TC2050** footprint for programming; native USB of the ESP32-C3 on the USB-C port
 
@@ -75,7 +75,28 @@ The ESP32-C3 is flashed directly over USB-C. If the upload does not start, close
 | PCB | 4 layers, 40.4 × 31.3 mm, 1.6 mm |
 | Schematic | [`hardware/mlr-v1.0/MLR-V1.0_schematic.pdf`](hardware/mlr-v1.0/MLR-V1.0_schematic.pdf) |
 | BOM | [`hardware/mlr-v1.0/MLR-V1.0_BOM.csv`](hardware/mlr-v1.0/MLR-V1.0_BOM.csv) |
-| Fabrication data | ODB++ in the [release](https://github.com/marvinramm/MLR-Mini-Line-Follower-Robot/releases) (most PCB manufacturers accept it directly) |
+| Fabrication data | ODB++ in the [release](https://github.com/marvinramm/MLR-Mini-Line-Follower-Robot/releases) (most PCB manufacturers accept it directly). V1.0 has a known error, see [Known issues](#known-issues). |
+
+## Known issues
+
+> [!WARNING]
+> **V1.0: the source and drain of Q3 (SI2302, self-hold via `PWR_EN`) are swapped.** Pad 2 (source) is on the R18/SW1 node, pad 3 (drain) on GND.
+
+The effects on V1.0:
+
+- The body diode of Q3 conducts permanently and pulls the gate of Q1 (AO3407A) to about 0.7 V.
+- Q1 is therefore always on as soon as a battery is connected.
+- The ON/OFF button has no effect, and the firmware cannot switch the robot off (`PWR_EN`). `KeepAngle` keeps running after you tilt the robot.
+- About 35 µA flow permanently through R17/R18.
+
+Driving and line following work normally. Q1 itself is placed correctly.
+
+**Fix for the next revision:** Q3 pad 2 to GND, pad 3 to the R18/SW1 node.
+
+**Rework on V1.0 boards:**
+
+- Remove Q3 and wire the SI2302 in with two short wires (source to GND, drain to the R18/SW1 node).
+- Or leave Q3 out. The robot then stays on while a battery is connected, without the quiescent current.
 
 ## License
 
