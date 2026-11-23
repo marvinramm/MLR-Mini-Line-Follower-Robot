@@ -1,0 +1,29 @@
+designators,description,manufacturer,manufacturer_part,package,side,qty
+A1,Chip antenna 2.4 GHz,,,ANT-2.4GHZ-3.2X1.6X1.2MM-REDUCED_KEEPOUT,top,1
+BAT1,Connector 1S Li-Po,,,LIPO1S_SMD_CON,top,1
+C1 C4 C6 C7 C12,"Capacitor, values see schematic",,,C0603,top,5
+C2 C3 C5 C8 C9 C10 C11 C13 C14 C15 C16 C17,"Capacitor, values see schematic",,,C0402,top,12
+D1,Schottky diode,MULTICOMP,SS34A,DIOM5026X262N,top,1
+D2 D3 D4 D5,Schottky diode,Infineon,BAT60A,SOD2513X110N,top,4
+IC1,LDO 3.3 V,Richtek,RT9080-33GJ5,SOT94P280X100-5N,top,1
+IC2,Boost converter 5 V,Feeling Technology,FP6291LR-G1,SOT95P280X145-6N,top,1
+IC3,Li-Ion charger,Microchip,MCP73831T-2ACI/OT,SOT95P270X145-5N,top,1
+IC4,Dual motor driver,Toshiba,TB6612FNG,SOP65P760X160-24N,top,1
+IC5,6-axis IMU,STMicroelectronics,LSM6DS3TR-C,LSM6DS3USTR,top,1
+IC6,Shift register,Nexperia,74HC595PW,SOP65P640X110-16N,top,1
+IC7,"MCU, Wi-Fi/BLE",Espressif,ESP32-C3FH4,QFN50P500X500X90-33N,top,1
+J1,Tag-Connect programming footprint,,TC2050-IDC-NL (no part),TC2050-IDC-NL,top,1
+JP1,Solder jumper (BOOT),,,SMT-JUMPER_2_NO_NO-SILK,top,1
+L1,Inductor 3.3 µH,,YNR6045-3R3N,INDPM6060X450N,top,1
+L2,Crystal 40 MHz,TAE(Zhejiang Abel Elec),S3240000121040,SMD3225_4P16MHZ20PF10PPM4085,top,1
+LED1 LED3,RGB LED,,FM-B2020RGBA-HG,FMB2020RGBAHG,bottom,2
+LED2,RGB LED,,FM-B2020RGBA-HG,FMB2020RGBAHG,top,1
+LED4 LED5,Warm white LED (line illumination),,XL-2012WWC,CHIP-LED0805,bottom,2
+M1 M2 M3 M4,Motor connector,,,LIPO1S_SMD_CON,bottom,4
+Q1,P-MOSFET (power switch),Alpha & Omega,AO3407A,SOT95P280X125-3N,top,1
+Q2 Q4,Phototransistor (line sensor),,PT17-21C/L41/TR8,0805,bottom,2
+Q3,N-MOSFET,Vishay,SI2302DDS-T1-GE3,SOT95P237X112-3N,top,1
+R1 R2 R3 R4 R6 R8 R9 R10 R12 R16 R17 R18 R20 R21 R22 R24 R25 R26 R27,"Resistor, values see schematic",,,R0402,top,19
+R5 R7 R11 R13 R14 R15 R19 R23,"Resistor, values see schematic",,,R0402,bottom,8
+SW1,Push button ON/OFF,XUNPU,TS-1088-AR02016,TS1088AR02016,top,1
+U1,USB-C receptacle,Korean Hroparts,TYPE-C-31-M-14,TYPE-C-31-M-14_HRO,top,1
